@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    env_file:
+      - ../.env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    
+  minio:
+    image: minio/minio:latest
+    restart: always
+    command: server --console-address ":9001" /data/
+    env_file:
+      - ../.env
+    volumes:
+      - minio_data:/data
+    ports:
+      - 9000:9000
+      - 9001:9001
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    restart: always
+    env_file: ../.env
+    volumes:
+     - rabbit_data:/var/lib/rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+volumes:
+  pg_data:
+  minio_data:
+  rabbit_data:

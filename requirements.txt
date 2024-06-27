@@ -1,0 +1,10 @@
+alembic==1.13.1
+asyncpg==0.29.0
+black==24.4.2
+celery==5.4.0
+fastapi==0.111.0
+flower==2.0.1
+minio==7.2.7
+pydantic-settings==2.3.4
+sqlalchemy[asyncio]
+validators==0.28.3
