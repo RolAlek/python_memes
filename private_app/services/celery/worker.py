@@ -1,6 +1,6 @@
 from celery import Celery
 
-from private_app.core.config import settings
+from core.config import settings
 
 app = Celery(
     __name__,

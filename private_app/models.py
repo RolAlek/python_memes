@@ -2,7 +2,7 @@ from datetime import datetime
 
 from sqlalchemy.orm import Mapped, mapped_column
 
-from private_app.core.db import Base
+from core.db import Base
 
 
 class Meme(Base):

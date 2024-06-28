@@ -4,8 +4,8 @@ from fastapi.encoders import jsonable_encoder
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from private_app.models import Meme
-from private_app.schemas import CreateMeme, UpdateMeme
+from models import Meme
+from schemas import CreateMeme, UpdateMeme
 
 
 async def create_meme(meme: CreateMeme, session: AsyncSession) -> Meme:

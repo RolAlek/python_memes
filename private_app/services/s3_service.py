@@ -1,6 +1,6 @@
 from minio import Minio
 
-from private_app.core.config import settings
+from core.config import settings
 
 
 class MinioManager:

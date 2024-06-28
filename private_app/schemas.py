@@ -1,3 +1,4 @@
+from datetime import datetime
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -16,3 +17,13 @@ class UpdateMeme(CreateMeme):
     name: str | None = Field(None, min_length=1, max_length=64)
     url: str | None = Field(None)
     file_name: str | None = Field(None)
+
+
+class ResponseMeme(BaseModel):
+    id: int
+    name: str
+    url: str
+    added: datetime
+
+    class Config:
+        orm_mod = True

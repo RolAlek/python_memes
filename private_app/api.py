@@ -1,12 +1,11 @@
 from fastapi import APIRouter, Depends, File, Form, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.shcemas import ResponseMeme
-from private_app.core import db_manager
-from private_app.core.utils import file_upload, file_delete
-from private_app.crud import create_meme, get_multi, meme_delete, meme_update
-from private_app.schemas import CreateMeme, UpdateMeme
-from private_app.validators import check_exist_meme_by_name, get_meme_or_404
+from schemas import ResponseMeme
+from core import db_manager, file_delete, file_upload
+from crud import create_meme, get_multi, meme_delete, meme_update
+from schemas import CreateMeme, UpdateMeme
+from validators import check_exist_meme_by_name, get_meme_or_404
 
 router = APIRouter()
 
