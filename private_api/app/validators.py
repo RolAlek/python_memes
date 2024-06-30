@@ -3,8 +3,8 @@ from http import HTTPStatus
 from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from crud import get_by_name, get_single
-from models import Meme
+from app.crud import get_by_name, get_single
+from app.models import Meme
 
 
 async def check_exist_meme_by_name(name: str, session: AsyncSession) -> str:

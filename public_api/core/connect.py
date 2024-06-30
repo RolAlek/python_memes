@@ -3,7 +3,7 @@ import os
 from fastapi import HTTPException
 from httpx import AsyncClient, HTTPStatusError, Response
 
-from public_app.core.config import settings
+from core.config import settings
 
 
 class HTTPManager:

@@ -5,7 +5,7 @@ services:
     image: postgres:latest
     restart: always
     env_file:
-      - ../.env
+      - .env
     volumes:
       - pg_data:/var/lib/postgresql/data
     ports:
@@ -16,7 +16,7 @@ services:
     restart: always
     command: server --console-address ":9001" /data/
     env_file:
-      - ../.env
+      - .env
     volumes:
       - minio_data:/data
     ports:
@@ -27,12 +27,33 @@ services:
     image: rabbitmq:3-management
     hostname: rabbitmq
     restart: always
-    env_file: ../.env
+    env_file: .env
     volumes:
      - rabbit_data:/var/lib/rabbitmq
     ports:
       - "5672:5672"
       - "15672:15672"
+  
+  private:
+    build: ./private_api/
+    env_file:
+      - .env
+    ports:
+      - 8001:8001
+    depends_on:
+      - db
+      - minio
+      - rabbitmq
+
+  public:
+    build: ./public_api/
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+    depends_on:
+      - private
+    
 
 volumes:
   pg_data:

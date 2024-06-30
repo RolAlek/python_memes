@@ -3,9 +3,9 @@ from http import HTTPStatus
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from httpx import AsyncClient, HTTPStatusError
 
-from core.shcemas import ResponseMeme
-from public_app.core import http_manager
-from public_app.core.config import settings
+from schemas import ResponseMeme
+from core import http_manager
+from core.config import settings
 
 
 router = APIRouter()

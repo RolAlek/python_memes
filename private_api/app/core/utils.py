@@ -6,8 +6,9 @@ import uuid
 from celery.result import AsyncResult, states
 from fastapi import HTTPException, UploadFile
 
-from core.config import settings
-from services.celery.tasks import delete_in_s3, upload_to_s3
+from app.core.config import settings
+from app.services.celery.tasks import delete_in_s3, upload_to_s3
+
 
 
 async def wait_task(task: AsyncResult, delay: float | int = 0.5):

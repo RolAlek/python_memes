@@ -1,7 +1,7 @@
 from io import BytesIO
 
-from services.celery.worker import app
-from services.s3_service import minio_manager
+from app.services.celery.worker import app
+from app.services.s3_service import minio_manager
 
 
 @app.task
