@@ -23,18 +23,12 @@ async def wait_task(task: AsyncResult, delay: float | int = 0.5):
 
 
 async def file_upload(file: UploadFile)-> tuple[str, Any]:
-    content_type = file.content_type
-    if content_type not in ('image/jpeg', 'image/png'):
-        raise HTTPException(
-            status_code=HTTPStatus.BAD_REQUEST,
-            detail='Этот мем не смешной!'
-        )
     filename = f'{str(uuid.uuid4())}.{file.filename.split(".")[-1]}'
     task = upload_to_s3.delay(
         settings.minio.bucket,
         filename,
         await file.read(),
-        content_type
+        file.content_type,
     )
     return filename, await wait_task(AsyncResult(task.id))
 
