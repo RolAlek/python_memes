@@ -20,7 +20,7 @@ class DBConfig(BaseModel):
 
 class PrivateConfig(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file='../.env',
+        env_file='.env',
         case_sensitive=False,
         env_nested_delimiter='__',
         env_prefix='PRIVATE_APP__',

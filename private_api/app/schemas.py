@@ -23,6 +23,7 @@ class ResponseMeme(BaseModel):
     id: int
     name: str
     url: str
+    file_name: str
     added: datetime
 
     class Config:

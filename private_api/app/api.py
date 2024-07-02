@@ -11,7 +11,7 @@ from app.validators import check_exist_meme_by_name, get_meme_or_404
 router = APIRouter()
 
 
-@router.post('/', response_model=ResponseMeme)
+@router.post('/', response_model=ResponseMeme, status_code=201)
 async def upload_meme(
     file: UploadFile = File(...),
     name: str = Form(...),

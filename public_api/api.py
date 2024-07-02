@@ -9,7 +9,7 @@ from core import http_manager
 router = APIRouter()
 
 
-@router.post('/', response_model=ResponseMeme)
+@router.post('/', response_model=ResponseMeme, status_code=201)
 async def add_meme(
     name: str = Form(...),
     file: UploadFile = File(...),

@@ -9,10 +9,7 @@ from app.models import Meme
 
 async def check_exist_meme_by_name(name: str, session: AsyncSession) -> str:
     if await get_by_name(name, session):
-        raise HTTPException(
-            status_code=HTTPStatus.BAD_REQUEST,
-            detail="Don't repeat yourself!",
-        )
+        raise ValueError("Don't repeat yourself!")
     return name
 
 
